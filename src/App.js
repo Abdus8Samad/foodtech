@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Profile from './components/Profile'
+import Orders from './components/Orders';
+import Axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component{
+  state = {
+    data:""
+  }
+  componentDidMount = () =>{
+    Axios.get("https://indapi.kumba.io/webdev/assignment")
+    .then(response => {
+      this.setState({data:response.data});
+    })
+    .catch(err => console.log(err));
+  }
+  render(){
+    return(
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to="/profile" />
+            </Route>
+            <Route path="/profile" exact>
+              <Profile data={this.state.data} /> 
+            </Route>
+            <Route path="/orders" exact>
+              <Orders data={this.state.data} />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
 }
-
-export default App;

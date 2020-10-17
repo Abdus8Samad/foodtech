@@ -1,0 +1,92 @@
+div.cover{
+    position:fixed;
+    width:100vw;
+    height:300px;
+    top:0;
+    background:#fca311;
+    padding:10px;
+    background-attachment: fixed;
+    img{
+        width:50px;
+    }
+}
+div.body{
+    background:white;
+    border-radius:50px;
+    width:100%;
+    min-height:800px;
+    height:100%;
+    position:relative;
+    z-index: 10;
+    top:200px;
+    div.profile{
+        width:fit-content;
+        margin:auto;
+        position: relative;
+        top:-40px;
+        text-align:center;
+        p.tag{
+            font-style:italic;
+            font-weight:500;
+        }
+        div.orders{
+            width:fit-content;
+            margin:-10px auto;
+            transition:all 0.2s ease;
+            border-radius:10px;
+            padding:10px;
+            border:3px solid rgba(0,0,0,0.1);
+            *{
+                margin:0px;
+            }
+            p{
+                font-size:40px;
+            }   
+            a{
+                margin-top:-20px;
+                font-size:25px;
+            }
+            a:hover{
+                text-decoration: underline;
+                cursor:pointer;
+            }
+        }
+        img{
+            border-radius:20px;
+            width:150px;
+            display:block;
+            margin:auto;
+            height:150px;
+        }
+    }
+    div.likesndislikes{
+        width:fit-content;
+        text-align:center;
+        margin:auto;
+        display:flex;
+        div.likes{
+            border-right:2px solid rgba(0,0,0,0.4);
+        }
+        div.dislikes{
+            border-left:2px solid rgba(0,0,0,0.4);
+        }
+        p{
+            font-size:40px;
+            padding:10px;
+        }
+        div.likes p{
+            background:rgba(0, 128, 0,0.7);
+        }
+        div.dislikes p{
+            background:rgba(255,0,0,0.7);
+        }
+        li{
+            padding:10px;
+            font-size:30px;
+            border-bottom:2px solid rgba(0,0,0,0.4);
+        }
+        div{
+            padding:0 20px;
+        }
+    }
+}
