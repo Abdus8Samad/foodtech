@@ -7,14 +7,22 @@ export default class Orders extends Component{
         totalTax:0,
         totalPrice:0
     }
+    func = () => (
+        this.props.data.items.forEach(item =>{
+            this.setState(state =>({
+                totalTax:state.totalTax + (item.tax_pct * (item.price / 100)),
+                totalPrice:state.totalPrice + item.price
+            }))
+        })
+    )
+    componentDidMount = () =>{
+        if(this.props.data !== ""){
+            this.func();
+        }
+    }
     componentDidUpdate = (prevProps) =>{
         if(this.props.data.order_id !== prevProps.data.order_id){
-            this.props.data.items.forEach(item =>{
-                this.setState(state =>({
-                    totalTax:state.totalTax + (item.tax_pct * (item.price / 100)),
-                    totalPrice:state.totalPrice + item.price
-                }))
-            })
+            this.func();
         }
     }
     render(){
